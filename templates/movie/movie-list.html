@@ -1,1 +1,27 @@
-<h1>list</h1>
+<h1>Popular</h1>
+<button><a href="{% url 'Movie_create' %}">Add new movie to list</a></button>
+
+{% for movie in movies_from_table %}
+    <div class="card">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="Movie Poster">
+        <div class="card-body">
+            <h2 class="card-title">Title: {{ movie.title }}</h2>
+            <p class="card-text">Release Date: {{ movie.release_date }}</p>
+            <p>Overview: {{ movie.overview }}</p>
+            <button><a href="{% url 'Movie_detail' movie.pk%}">{{ movie.title }}</a></button>
+            <button><a href="{% url 'Movie_delete' movie.pk%}">Delete</a></button>
+        </div>
+    </div>
+{% endfor %}
+
+{% for movie in movies_from_json %}
+    <div class="card">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="Movie Poster">
+        <div class="card-body">
+            <h2 class="card-title">Title: {{ movie.title }}</h2>
+            <p class="card-text">Release Date: {{ movie.release_date }}</p>
+            <p>Overview: {{ movie.overview }}</p>
+        </div>
+    </div>
+
+{% endfor %}

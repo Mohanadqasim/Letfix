@@ -1,1 +1,11 @@
-<h1>list</h1>
+{% extends '_base.html' %}
+{% block content %}
+<img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="Movie Poster">
+<div>
+    <h2>Title: {{ movie.title }}</h2>
+    <p>Release Date: {{ movie.release_date }}</p>
+    <p>Overview: {{ movie.overview }}</p>   
+    <button><a href="{% url 'Movie_update' movie.pk %}">Upate info!!!!</a></button>
+    <button><a href="{% url 'Movie_list' %}">Back to list!!!!!</a></button>
+</div>
+{% endblock content %}
